@@ -1,0 +1,37 @@
+#Otra posible solucion y mejor optmizada al ejercicio 5 de https://retosdeprogramacion.com/ejercicios/
+#Crea una única función (importante que sólo sea una) que sea capaz
+# de calcular y retornar el área de un polígono.
+# - La función recibirá por parámetro sólo UN polígono a la vez.
+# - Los polígonos soportados serán Triángulo, Cuadrado y Rectángulo.
+# - Imprime el cálculo del área de un polígono de cada tipo.
+
+#Generamos el poligono
+class Poligono:
+  def __init__(self, base, altura=None):
+    self.base = base
+    self.altura = altura if altura is not None else base
+  def area(self):
+    raise NotImplementedError("Método que vamos a utilizar en los diferentes poligonos")
+
+
+#Generamos las clases que van a heredar de poligono
+class Triangulo(Poligono):
+  def area(self):
+    return 1/2 * self.base * self.altura
+
+class Rectangulo(Poligono):
+  def area(self):
+    return self.base * self.altura
+
+class Cuadrado(Poligono):
+  def __init__(self, base):
+    super().__init(base, base)
+  def area(self):
+    return self.base ** 2
+
+
+def area_poligono(poligono):
+  if politono isinstance(poligono, Poligono):
+    print(f"El área del {poligono.__class__.__name__} es: {poligono.area()}")
+  else:
+    print("Polígono no soportado por el programa")
